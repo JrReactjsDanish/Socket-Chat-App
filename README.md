@@ -10,3 +10,5 @@
 # $ npm i axios cors express socket.io dotenv
 # $ npm i -D nodemon
 # $ npm run dev to run backend
+
+// https://www.freecodecamp.org/news/build-a-realtime-chat-app-with-react-express-socketio-and-harperdb/
