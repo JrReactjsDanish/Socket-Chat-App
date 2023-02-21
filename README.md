@@ -10,3 +10,5 @@
 # $ npm i axios cors express socket.io dotenv
 # $ npm i -D nodemon
 # $ npm run dev to run backend
+
+# for data base: HarperDB
