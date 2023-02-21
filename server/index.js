@@ -36,6 +36,7 @@ io.on("connection", (socket) => {
     socket.join(room); // Join the user to a socket room
 
     let __createdtime__ = Date.now(); // Current timestamp
+
     // Send message to all users currently in the room, apart from the user that just joined
     socket.to(room).emit("receive_message", {
       message: `${username} has joined the chat room`,
@@ -57,7 +58,7 @@ io.on("connection", (socket) => {
     // To list all the users on frontend
     chatRoomUsers = allUsers.filter((user) => user.room === room);
 
-    // Send back to frontend
+    // Show all the users per Room
     socket.to(room).emit("chatroom_users", chatRoomUsers);
     socket.emit("chatroom_users", chatRoomUsers);
 
@@ -72,7 +73,6 @@ io.on("connection", (socket) => {
 
     harperGetMessages(room)
       .then((last100Messages) => {
-        // console.log('latest messages', last100Messages);
         socket.emit("last_100_messages", last100Messages);
       })
       .catch((err) => console.log(err));
@@ -96,6 +96,7 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
       console.log("User disconnected from the chat");
       const user = allUsers.find((user) => user.id == socket.id);
+      
       if (user?.username) {
         allUsers = leaveRoom(socket.id, allUsers);
         socket.to(chatRoom).emit("chatroom_users", allUsers);

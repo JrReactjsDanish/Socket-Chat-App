@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import '../../App.css';
 
 const Messages = ({ socket }) => {
@@ -29,6 +29,7 @@ const Messages = ({ socket }) => {
     socket.on("last_100_messages", (last100Messages) => {
       console.log("Last 100 messages:", JSON.parse(last100Messages));
       last100Messages = JSON.parse(last100Messages);
+      
       // Sort these messages by __createdtime__
       last100Messages = sortMessagesByDate(last100Messages);
       setMessagesReceived((state) => [...last100Messages, ...state]);
@@ -39,8 +40,7 @@ const Messages = ({ socket }) => {
 
   // Scroll to the most recent message
   useEffect(() => {
-    messagesColumnRef.current.scrollTop =
-      messagesColumnRef.current.scrollHeight;
+    messagesColumnRef.current.scrollTop = messagesColumnRef.current.scrollHeight;
   }, [messagesRecieved]);
 
   function sortMessagesByDate(messages) {
@@ -49,7 +49,7 @@ const Messages = ({ socket }) => {
     );
   }
 
-  // dd/mm/yyyy, hh:mm:ss
+  // Date format dd/mm/yyyy, hh:mm:ss
   function formatDate(timestamp) {
     const date = new Date(timestamp);
     return date.toLocaleString();

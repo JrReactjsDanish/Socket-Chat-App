@@ -1,5 +1,5 @@
-import styles from './styles.module.css';
 import React, { useState } from 'react';
+import styles from './styles.module.css';
 import '../../App.css';
 
 const SendMessage = ({ socket, username, room }) => {

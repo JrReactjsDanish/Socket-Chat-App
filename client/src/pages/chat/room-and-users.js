@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../App.css';
 
@@ -20,6 +20,7 @@ const RoomAndUsers = ({ socket, username, room }) => {
   const leaveRoom = () => {
     const __createdtime__ = Date.now();
     socket.emit('leave_room', { username, room, __createdtime__ });
+    
     // Redirect to home page
     navigate('/', { replace: true });
   };

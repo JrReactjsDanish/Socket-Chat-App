@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./styles.module.css";
 import MessagesReceived from "./messages";
 import SendMessage from "./send-message";
