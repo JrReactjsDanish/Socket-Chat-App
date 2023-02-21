@@ -9,3 +9,4 @@
 # $ npm init -y
 # $ npm i axios cors express socket.io dotenv
 # $ npm i -D nodemon
+# $ npm run dev to run backend
